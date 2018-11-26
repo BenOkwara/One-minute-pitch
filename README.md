@@ -2,7 +2,9 @@
 This app allows the users to make a one-minute pitch that will be commented and voted on as well.
 
 ###  Author
-Benson Waweru Okwara [link](https://dashboard.heroku.com/apps/pitch-new)
+Benson Waweru Okwara 
+
+[One-Minute-Pitch](https://dashboard.heroku.com/apps/pitch-new)
 
 ### Description
 This is an app that allows users to post pitches and comment on other people's pitches
