@@ -1,0 +1,5 @@
+Hello {{user.username}}
+Welcome to One Pitch perfect
+
+I have just noticed you've signed to this portal and just to say quick!
+Men, enjoy your stay .. :-)

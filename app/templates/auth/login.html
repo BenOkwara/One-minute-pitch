@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% block styles %}
+  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+  crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+
+{%endblock %}
+
+  {% block content %}
+  <div class="login">
+    <div style="width:50%; height:400px; background:silver;margin: 50 300; border:2px solid purple; box-shadow: 0 15px 40px rgba(0,0,0.5)">
+      <div class="pitch">
+        <div style="float: left; width:60%; height:400%; box-sizing:border-box; padding-left: 5%; margin: 20">
+          LOGIN
+          <!--Flash message -->
+          {% for message in get_flashed_messages() %}
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+          </div>
+          {% endfor %}
+          <!-- Login form -->
+          <div style="margin:0; padding:0; font-size:15px; color:blue">
+            {{wtf.quick_form(login_form)}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <br>
+  <br>
+  <br>
+  {% for pitches in pitchs %}
+  <div class="pitches">
+    <div class="card" style=" height: 250px; width: 400; margin:20; float: right; font-size: 15px; color:green; background-image: url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.cholet-basket.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Factualites%2Fpublic%2Fthumbnails%2Fimage%2Fl_-_pitch_fond_blanc_pantone.jpg%3Fitok%3DLTTXERLf&f=1'); background-size: cover">
+      <div class="card-body">
+        <h5 class="card-title">Category: {{ pitches.category }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ pitches.title }}</h6>
+        <p class="card-text">{{ pitches.description }}.</p>
+        <small>{{ pitches.posted }}</small>
+        <br>
+        <hr>
+        <br>
+        <a href="/comment/new/{{pitches.id}}" class="card-link"><button type="button" class="btn btn-light">Add Comment</button></a>
+        <a href="{{ url_for('main.add_pitch')}}" class="card-link"><button type="button" class="btn btn-light">Add
+            Pitch
+          </button></a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  {% endblock%}

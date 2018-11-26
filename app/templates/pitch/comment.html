@@ -1,0 +1,26 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+
+            {{ wtf.quick_form(comment_form) }}
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    {% for comment in comment %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.sindiana-tech.com%2Fwp-content%2Fuploads%2F2015%2F06%2Fpitch-logo.jpg&f=1"
+            alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">Comment {{ comment.username }}</p>
+            <p class="card-text">{{comment.comment}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock%}

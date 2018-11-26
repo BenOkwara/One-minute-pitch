@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{user.username| capitalize}} </h3>
+
+    <!--Displaying user bio-->
+    {% if user.bio %}
+      <p> {{user.bio}}</p>
+    {%else%}
+      <p> {{user.username| capitalize}} has no bio </p>
+    {% endif %}
+  </div>
+
+  <!--Display profile photo-->
+  <div class="col-md-4">
+
+    <!-- This checks profile_pic_path of one 'user' It is specific!!!
+    as it goes to the db. checks out a specific user with the following bio and has the following profile
+    picture. So very specific. It searches for the specific user with the following profile. Ofcourse, It
+    can only be one user who contains all the following personal info. that will definately be (this applies to All the other
+    facts also.)choosen out when the implementation of this search done.-->
+    
+    {% if user.profile_pic_path %}
+    <img src="{{url_for('static',filename = user.profile_pic_path)}}" alt="" class="img-thumbnail">
+    {%else%}
+    <p>No profile picture</p>
+    {% endif %}
+  </div>
+    {% if user == current_user %}
+      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
